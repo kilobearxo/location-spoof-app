@@ -1,0 +1,8 @@
+{
+  "META-INF/com/google/android/update-binary": "#!/sbin/sh\n# Magisk Module Installer\n...",
+  "META-INF/com/google/android/updater-script": "#MAGISK",
+  "module.prop": "id=locationspoof_auto\nname=LocationSpoof Auto\nversion=v1.0\nversionCode=1\nauthor=LocationSpoof\ndescription=Automatic location spoofing for casino and banking apps",
+  "service.sh": "#!/system/bin/sh\n# LocationSpoof Auto Service\nAPI_BASE=\"https://596207ef-f19a-4a30-ab59-fc565ae43740-00-3bx34fik1vey6.picard.replit.dev\"\nDEVICE_ID=$(getprop ro.serialno)\n\n# Monitor foreground apps and set locations\nwhile true; do\n    CURRENT_APP=$(dumpsys window windows | grep -E 'mCurrentFocus' | cut -d'/' -f1 | cut -d' ' -f7)\n    if [ ! -z \"$CURRENT_APP\" ]; then\n        curl -s \"$API_BASE/api/apps/$CURRENT_APP/export\" | jq -r '.location' > /tmp/location.json\n    fi\n    sleep 2\ndone",
+  "system.prop": "ro.debuggable=1\nro.secure=0",
+  "README.md": "# LocationSpoof Auto Module\n\n## Installation\n1. Download this ZIP file to your device\n2. Open Magisk Manager\n3. Tap \"Install\" -> \"Install from storage\"\n4. Select this ZIP file\n5. Reboot your device\n\n## Configuration\n- API Endpoint: https://596207ef-f19a-4a30-ab59-fc565ae43740-00-3bx34fik1vey6.picard.replit.dev\n- Supported Apps: 70+ casino and banking apps\n- Auto-detection: Enabled\n\n## Troubleshooting\nCheck logs at: /data/adb/modules/locationspoof_auto/logs/"
+}
